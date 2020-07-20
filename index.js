@@ -27,11 +27,17 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ * the difference between counter1 and counter2 is that
+ * in counter two count is a global declared variable.
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ * Counter1 uses a closure I can tell because the return
+ * function is nested in the the counterMaker
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *you can hoist counter2 and counter1 you have to invoke 
+ you can use counter2 for mutiple things while counter1 
+ can only be used inside the scope of counterMaker
 */
 
 // counter1 code
@@ -43,7 +49,7 @@ function counterMaker() {
 }
 
 const counter1 = counterMaker();
-
+//  console.log(counter1(1));
 // counter2 code
 let count = 0;
 
@@ -51,15 +57,13 @@ function counter2() {
   return count++;
 }
 
+//  Task 2: inning() 
+/*
+Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. 
+*/
 
-/* Task 2: inning() 
-
-Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
-
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(points){
+  return Math.floor(Math.random() * 3)
 }
 
 /* Task 3: finalScore()
@@ -76,10 +80,12 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(inning,numOfInnings){
+  let home = 0
+  let away = 0
+  for (i=0; i>=0; i++);
+  home += inning;
+  away += inning;
 }
 
 /* Task 4: 
@@ -103,8 +109,25 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inning, numOfInnings, getInningScore) {
+  function getInningScore (inning){
+    let home = 0
+    let away = 0
+    for (i=0; i>=0; i++);{
+      if (i ===0){
+        return `1st innging : awayTeam ${getInningScore} - homeTeam${getInningScore}`
+      }
+      if (i ===1){
+        return `2nd innging : awayTeam ${getInningScore} - homeTeam${getInningScore}`
+      }
+      if(i===2){
+        return `3rd innging : awayTeam ${getInningScore} - homeTeam${getInningScore}`
+      }
+      if (i+1===inning){
+        return `innging : awayTeam ${getInningScore} - homeTeam${getInningScore}`
+      }
+    }
+  }
 }
 
 
