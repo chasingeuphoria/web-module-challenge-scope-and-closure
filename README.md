@@ -42,6 +42,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+=> Closure is 'reach' a function that has been declared has if it is nested then it can 'reach' above it to its parent function to gather data.
+
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,13 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+=> Where the return function ends is the clousre becuase we are returning a nested function.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+=> dansRoll(); is always invoking the `personalDice` function, but whats changing is the return becuase we are useing Math.Random which should give us a random number everytime.
+
 c. What is the lexical scope of `newRoll`? 
+=> `newRoll` is lexically bound to its parent which is the return function 
 
 ### Task 2c - Exit Ticket
 
