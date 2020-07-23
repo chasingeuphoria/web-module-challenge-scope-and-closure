@@ -62,7 +62,7 @@ function counter2() {
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. 
 */
 
-function inning(points){
+function inning(){
   return Math.floor(Math.random() * 3)
 }
 
@@ -80,13 +80,19 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(inning,numOfInnings){
+function finalScore(func,numOfInnings){
   let home = 0
   let away = 0
-  for (i=0; i>=0; i++);
-  home += inning;
-  away += inning;
+  for (let i=0; i<numOfInnings; i++);{
+    home += func();
+    away += func();
+  }
+  return {
+    Home: home,
+    Away: away
+  }
 }
+
 
 /* Task 4: 
 
@@ -107,27 +113,51 @@ and returns the score at each pont in the game, like so:
 8th inning: awayTeam - homeTeam
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
-
-
-function scoreboard(inning, numOfInnings, getInningScore) {
-  function getInningScore (inning){
-    let home = 0
-    let away = 0
-    for (i=0; i>=0; i++);{
-      if (i ===0){
-        return `1st innging : awayTeam ${getInningScore} - homeTeam${getInningScore}`
-      }
-      if (i ===1){
-        return `2nd innging : awayTeam ${getInningScore} - homeTeam${getInningScore}`
-      }
-      if(i===2){
-        return `3rd innging : awayTeam ${getInningScore} - homeTeam${getInningScore}`
-      }
-      if (i+1===inning){
-        return `innging : awayTeam ${getInningScore} - homeTeam${getInningScore}`
-      }
-    }
+function getInningScore(inning) {
+  return {
+    Home: func(),
+    Away: func()
   }
 }
+
+function scoreboard(inning, getInningScore, numOfInnings) {
+
+    let score;
+    let finalHome = 0;
+    let finalAway = 0;
+    let scoreboard = {};
+    for (let i=0; i<=numOfInnings; i++){
+      if (i ===0){
+        score = getInningScore(inning);
+        finalHome += score.Home;
+        finalAway += score.Away;
+         scoreboard['1st inning'] = `Away Team: ${score.Away} - Home Team: ${score.Home}`;
+      }
+      if (i ===1){
+        score = getInningScore(inning);
+        finalHome += score.Home;
+        finalAway += score.Away;
+         scoreboard['2nd inning'] = `Away Team: ${score.Away} - Home Team: ${score.Home}`;
+      }
+      if(i===2){
+        score = getInningScore(inning);
+        finalHome += score.Home;
+        finalAway += score.Away;
+        scoreboard['3rd inning'] = `Away Team: ${score.Away} - Home Team: ${score.Home}`;
+      }
+      if (i >2 && i<(numOfInnings - 1)){
+        score = getInningScore(inning);
+        finalHome += score.Home;
+        finalAway += score.Away;
+        scoreboard[i+'th inning'] = `Away Team: ${score.Away} - Home Team: ${score.Home}`;
+      }
+
+      if (i===(numOfInnings.length -1)){
+        scoreboard['Final Score'] = `Away Team: ${finalAway} - Home Team: ${finalHome}`;
+    }
+  }
+return scoreboard;
+}
+console.log(scoreboard(inning(),getInningScore(), 9));
 
 
